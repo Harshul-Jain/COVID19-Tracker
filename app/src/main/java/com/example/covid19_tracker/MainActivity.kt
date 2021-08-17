@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm a")
         lastUpdatedTv.text =
             "Last Updated \n ${getTimeAgo(simpleDateFormat.parse(lastUpdatedTime))}"
+        confirmedTv.text = data.confirmed
+        recoveredTv.text = data.recovered
+        deceasedTv.text = data.deaths
+        activeTv.text = data.active
 
     }
 
