@@ -21,6 +21,7 @@ class StateAdapter(val list: List<StatewiseItem>) : BaseAdapter() {
         view.recoveredTv.text = item.recovered
         view.activeTv.text = item.active
         view.deceasedTv.text = item.deaths
+        view.stateTv.text = item.state
         return view
     }
 
