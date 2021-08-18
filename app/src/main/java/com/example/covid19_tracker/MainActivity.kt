@@ -1,5 +1,6 @@
 package com.example.covid19_tracker
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -37,7 +38,6 @@ class MainActivity : AppCompatActivity() {
                     bindStateWiseData(data.statewise.subList(1, data.statewise.size))
                 }
             }
-
         }
     }
 
@@ -46,11 +46,12 @@ class MainActivity : AppCompatActivity() {
         list.adapter = stateAdapter
     }
 
+    @SuppressLint("SetTextI18n")
     private fun bindCombinedData(data: StatewiseItem) {
-        val lastUpdatedTime = data.lastupdatedtime
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm a")
+        val lastUpdatedTime = data.lastupdatedtime!!
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.ROOT)
         lastUpdatedTv.text =
-            "Last Updated \n ${getTimeAgo(simpleDateFormat.parse(lastUpdatedTime))}"
+            "Last Updated \n ${getTimeAgo(simpleDateFormat.parse(lastUpdatedTime)!!)}"
         confirmedTv.text = data.confirmed
         recoveredTv.text = data.recovered
         deceasedTv.text = data.deaths
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 "$hours hour ${minutes % 60} min ago"
             }
             else -> {
-                SimpleDateFormat("dd/MM/yyyy hh:mm a").format(past).toString()
+                SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ROOT).format(past).toString()
             }
 
         }

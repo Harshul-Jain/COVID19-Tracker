@@ -16,6 +16,7 @@ data class StatewiseItem(
 	val statecode: String? = null,
 	val confirmed: String? = null,
 	val deaths: String? = null,
-	val lastupdatedtime: String? = null
+	val lastupdatedtime: String? = null,
+	val deltaactive: String? = null
 )
 
